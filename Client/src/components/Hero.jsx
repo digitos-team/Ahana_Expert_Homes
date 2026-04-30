@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import deeshaLogo from "../assets/LATEST_LOGO-1-removebg-preview.png";
-import brochurePdf from "../assets/Landmark - Brochure 5. olive, grey & gold (1).pdf";
+import brochurePdf from "../assets/Landmark-Brochure_Olive&green.pdf";
 import entranceLobby from "../assets/entrance_lobby.jpeg";
 
 
@@ -75,7 +75,7 @@ export function Hero() {
           >
             <a
               href={brochurePdf}
-              download="Landmark-Brochure.pdf"
+              download="Landmark-Brochure_Olive&green.pdf"
               className="bg-transparent border-2 border-white hover:bg-white hover:text-[#2c3820] text-white px-8 py-4 rounded-full transition-all duration-300 font-semibold text-lg text-center inline-block"
               style={{ fontFamily: "Montserrat, sans-serif" }}
             >
