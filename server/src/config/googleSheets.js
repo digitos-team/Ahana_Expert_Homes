@@ -7,10 +7,14 @@ dotenv.config();
 export const appendToSheet = async (data) => {
   try {
     const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL?.replace(/"/g, '')?.trim();
-    const key = process.env.GOOGLE_PRIVATE_KEY
-      ?.replace(/\\n/g, '\n')
-      ?.replace(/"/g, '')
-      ?.trim();
+    
+    // Handle all possible private key formats from hosting providers
+    let key = process.env.GOOGLE_PRIVATE_KEY || '';
+    // Remove surrounding quotes if present
+    key = key.replace(/^["']|["']$/g, '');
+    // Replace literal \n (the two-character sequence) with actual newlines
+    key = key.replace(/\\n/g, '\n');
+    key = key.trim();
     const sheetId = process.env.GOOGLE_SHEET_ID?.replace(/"/g, '')?.trim();
 
     if (!email || !key || !sheetId) {
