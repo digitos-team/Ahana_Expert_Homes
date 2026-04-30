@@ -6,16 +6,28 @@ dotenv.config();
 
 export const appendToSheet = async (data) => {
   try {
+    const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL?.replace(/"/g, '')?.trim();
+    const key = process.env.GOOGLE_PRIVATE_KEY
+      ?.replace(/\\n/g, '\n')
+      ?.replace(/"/g, '')
+      ?.trim();
+    const sheetId = process.env.GOOGLE_SHEET_ID?.replace(/"/g, '')?.trim();
+
+    if (!email || !key || !sheetId) {
+      const missing = [];
+      if (!email) missing.push('GOOGLE_SERVICE_ACCOUNT_EMAIL');
+      if (!key) missing.push('GOOGLE_PRIVATE_KEY');
+      if (!sheetId) missing.push('GOOGLE_SHEET_ID');
+      throw new Error(`Missing environment variables: ${missing.join(', ')}`);
+    }
+
     const serviceAccountAuth = new JWT({
-      email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL?.trim(),
-      key: process.env.GOOGLE_PRIVATE_KEY
-        ?.replace(/\\n/g, '\n')
-        ?.replace(/"/g, '')
-        ?.trim(),
+      email,
+      key,
       scopes: ['https://www.googleapis.com/auth/spreadsheets'],
     });
 
-    const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID, serviceAccountAuth);
+    const doc = new GoogleSpreadsheet(sheetId, serviceAccountAuth);
 
     await doc.loadInfo();
     const sheet = doc.sheetsByIndex[0];

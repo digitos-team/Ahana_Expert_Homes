@@ -23,9 +23,10 @@ export const createEnquiry = async (req, res) => {
       message: 'Enquiry submitted successfully',
     });
   } catch (error) {
+    console.error('Enquiry Error:', error.message);
     res.status(500).json({
       success: false,
-      error: 'Failed to process enquiry',
+      error: error.message || 'Failed to process enquiry',
     });
   }
 };
