@@ -50,7 +50,8 @@ export function EnquiryForm() {
 
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:5000/api/enquiries', formData);
+      const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const response = await axios.post(`${baseUrl}/api/enquiries`, formData);
       if (response.data.success) {
         toast.success('Enquiry Sent Successfully!', {
           description: 'Our team will contact you shortly.',
