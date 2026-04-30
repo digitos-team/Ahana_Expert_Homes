@@ -74,7 +74,7 @@ export function FloorPlans() {
           <div className="bg-white rounded-full p-2 shadow-lg inline-flex">
             <button
               onClick={() => setActiveTab('1BHK')}
-              className={`px-8 py-3 rounded-full transition-all duration-300 font-semibold ${
+              className={`px-4 sm:px-8 py-3 rounded-full transition-all duration-300 font-semibold ${
                 activeTab === '1BHK'
                   ? 'bg-[#2c3820] text-white shadow-lg'
                   : 'text-gray-600 hover:text-[#2c3820]'
@@ -85,7 +85,7 @@ export function FloorPlans() {
             </button>
             <button
               onClick={() => setActiveTab('2BHK')}
-              className={`px-8 py-3 rounded-full transition-all duration-300 font-semibold ${
+              className={`px-4 sm:px-8 py-3 rounded-full transition-all duration-300 font-semibold ${
                 activeTab === '2BHK'
                   ? 'bg-[#2c3820] text-white shadow-lg'
                   : 'text-gray-600 hover:text-[#2c3820]'
@@ -96,7 +96,7 @@ export function FloorPlans() {
             </button>
             <button
               onClick={() => setActiveTab('Jodi Flats')}
-              className={`px-8 py-3 rounded-full transition-all duration-300 font-semibold ${
+              className={`px-4 sm:px-8 py-3 rounded-full transition-all duration-300 font-semibold ${
                 activeTab === 'Jodi Flats'
                   ? 'bg-[#2c3820] text-white shadow-lg'
                   : 'text-gray-600 hover:text-[#2c3820]'

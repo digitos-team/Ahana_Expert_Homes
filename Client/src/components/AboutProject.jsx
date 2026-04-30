@@ -22,7 +22,7 @@ export function AboutProject() {
               />
             </div>
             {/* Decorative element */}
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#2c3820] rounded-2xl transform rotate-12 -z-10"></div>
+            <div className="absolute bottom-0 lg:-bottom-6 right-0 lg:-right-6 w-32 h-32 bg-[#2c3820] rounded-2xl transform rotate-12 -z-10"></div>
           </motion.div>
 
           {/* Content */}

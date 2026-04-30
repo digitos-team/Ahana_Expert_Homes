@@ -29,7 +29,7 @@ export function Hero() {
           {/* Deesha Constructions Logo with Integrated Background Band */}
           <div className="relative mb-8 inline-block">
             {/* Background Band - Locked to Logo center */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300vw] h-28 md:h-32 white-gradient-band transform rotate-[-2deg] pointer-events-none origin-center"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-28 md:h-32 white-gradient-band transform rotate-[-2deg] pointer-events-none origin-center"></div>
             
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
