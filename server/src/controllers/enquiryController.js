@@ -1,42 +1,77 @@
-import { appendToSheet } from '../config/googleSheets.js';
+import Enquiry from '../models/Enquiry.js';
 
-// @desc    Create new enquiry
+// @desc    Create a new enquiry
 // @route   POST /api/enquiries
-// @access  Public
 export const createEnquiry = async (req, res) => {
-  try {
-    const { name, mobile, email, unitType, message } = req.body;
+    try {
+        const { name, mobile, email, unitType, message } = req.body;
+        
+        const enquiry = await Enquiry.create({
+            name,
+            mobile,
+            email,
+            unitType,
+            message
+        });
 
-    // Validate fields
-    if (!name || !mobile || !email) {
-      return res.status(400).json({
-        success: false,
-        error: 'Please provide all required fields (name, mobile, email)',
-      });
+        res.status(201).json({ success: true, data: enquiry });
+    } catch (error) {
+        res.status(500).json({ success: false, error: error.message });
     }
-
-    // Append to Google Sheets
-    await appendToSheet({ name, mobile, email, unitType, message });
-
-    res.status(201).json({
-      success: true,
-      message: 'Enquiry submitted successfully',
-    });
-  } catch (error) {
-    console.error('Enquiry Error:', error.message);
-    res.status(500).json({
-      success: false,
-      error: error.message || 'Failed to process enquiry',
-    });
-  }
 };
 
 // @desc    Get all enquiries
 // @route   GET /api/enquiries
-// @access  Private (Currently disabled as no DB)
 export const getEnquiries = async (req, res) => {
-  res.status(501).json({
-    success: false,
-    message: 'GET enquiries is not implemented without database storage',
-  });
+    try {
+        const keyword = req.query.search ? {
+            $or: [
+                { name: { $regex: req.query.search, $options: 'i' } },
+                { email: { $regex: req.query.search, $options: 'i' } },
+                { mobile: { $regex: req.query.search, $options: 'i' } },
+            ]
+        } : {};
+
+        const enquiries = await Enquiry.find({ ...keyword }).sort({ createdAt: -1 });
+        res.status(200).json({ success: true, data: enquiries });
+    } catch (error) {
+        res.status(500).json({ success: false, error: error.message });
+    }
+};
+
+// @desc    Update enquiry status
+// @route   PUT /api/enquiries/:id
+export const updateEnquiryStatus = async (req, res) => {
+    try {
+        const { status } = req.body;
+        const enquiry = await Enquiry.findByIdAndUpdate(
+            req.params.id,
+            { status },
+            { new: true, runValidators: true }
+        );
+
+        if (!enquiry) {
+            return res.status(404).json({ success: false, error: 'Enquiry not found' });
+        }
+
+        res.status(200).json({ success: true, data: enquiry });
+    } catch (error) {
+        res.status(500).json({ success: false, error: error.message });
+    }
+};
+
+// @desc    Delete an enquiry
+// @route   DELETE /api/enquiries/:id
+export const deleteEnquiry = async (req, res) => {
+    try {
+        const enquiry = await Enquiry.findByIdAndDelete(req.params.id);
+
+        if (!enquiry) {
+            return res.status(404).json({ success: false, error: 'Enquiry not found' });
+        }
+
+        res.status(200).json({ success: true, data: {} });
+    } catch (error) {
+        res.status(500).json({ success: false, error: error.message });
+    }
 };

@@ -6,14 +6,28 @@ const AdminLogin = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // For now, simple mock login
-    if (email === 'admin@ahana.com' && password === 'admin123') {
-      localStorage.setItem('adminToken', 'mock-token');
-      navigate('/admin/dashboard');
-    } else {
-      alert('Invalid credentials');
+    try {
+      const response = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem('adminToken', data.token);
+        navigate('/admin/dashboard');
+      } else {
+        alert(data.message || 'Invalid credentials');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      alert('Server error, please try again later.');
     }
   };
 
