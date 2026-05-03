@@ -40,7 +40,7 @@ export function FinalCTA() {
             Book Now
           </button>
           <a
-            href="tel:+919820606049"
+            href="tel:+919820052888"
             className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#2c3820] px-10 py-4 rounded-full transition-all duration-300 font-semibold text-lg flex items-center gap-3"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
@@ -56,8 +56,8 @@ export function FinalCTA() {
           <p className="text-white text-lg mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             Sion-Chunabhatti, Mumbai, Maharashtra
           </p>
-          <a href="tel:+919820606049" className="text-[#d7bc73] text-2xl font-semibold hover:text-white transition-colors" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            +91 9820606049
+          <a href="tel:+919820052888" className="text-[#d7bc73] text-2xl font-semibold hover:text-white transition-colors" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            +91 98200 52888
           </a>
         </div>
       </div>

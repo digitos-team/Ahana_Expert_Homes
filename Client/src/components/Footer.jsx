@@ -26,8 +26,8 @@ export function Footer() {
             <div className="space-y-2 text-gray-400" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               <p>Landmark, Sion-Chunabhatti</p>
               <p>Mumbai, Maharashtra</p>
-              <a href="tel:+919820606049" className="block hover:text-[#c4a55a] transition-colors">
-                +91 9820606049
+              <a href="tel:+919820052888" className="block hover:text-[#c4a55a] transition-colors">
+                +91 98200 52888
               </a>
               <a href="mailto:info@aahanaexperthomes.com" className="block hover:text-[#c4a55a] transition-colors">
                 info@aahanaexperthomes.com
