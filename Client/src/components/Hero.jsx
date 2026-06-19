@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
-import deeshaLogo from "../assets/LATEST_LOGO-1-removebg-preview.png";
 import brochurePdf from "../assets/Landmark-Brochure_Olive&green.pdf";
 import entranceLobby from "../assets/entrance_lobby.jpeg";
+import reraLogo from "../assets/rerabackgroundremovedlogo.png";
 
 
 export function Hero() {
@@ -17,6 +17,28 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A1A]/80 via-[#1A1A1A]/50 to-transparent"></div>
       </div>
 
+      {/* RERA Badge - Top Right */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1, duration: 0.8 }}
+        className="absolute top-24 right-4 sm:right-6 md:right-8 lg:right-12 z-20 w-24 sm:w-28 md:w-36 lg:w-44 transition-all duration-300"
+      >
+        <a
+          href="https://maharera.maharashtra.gov.in"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block group bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl p-2 sm:p-3 shadow-2xl transition-all duration-300 hover:scale-105 hover:border-white/30"
+          title="Verify Maharera Registration"
+        >
+          <img
+            src={reraLogo}
+            alt="MahaRERA Registration"
+            className="w-full h-auto object-contain drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]"
+          />
+        </a>
+      </motion.div>
+
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
@@ -27,22 +49,9 @@ export function Hero() {
           className="max-w-3xl"
         >
           {/* Deesha Constructions Logo with Integrated Background Band */}
-          <div className="relative mb-8 inline-block">
+          <div className="relative mb-8 h-24 md:h-32">
             {/* Background Band - Locked to Logo center */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200vw] h-28 md:h-32 white-gradient-band transform rotate-[-2deg] pointer-events-none origin-center"></div>
-            
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-              className="relative z-10"
-            >
-              <img
-                src={deeshaLogo}
-                alt="Deesha Constructions - Building Success Together"
-                className="h-24 md:h-32 w-auto object-contain drop-shadow-lg"
-              />
-            </motion.div>
           </div>
 
           <motion.h1
@@ -75,7 +84,7 @@ export function Hero() {
           >
             <a
               href={brochurePdf}
-              download="Landmark-Brochure_Olive&green.pdf"
+              download="LandmarkBrochure.pdf"
               className="bg-transparent border-2 border-white hover:bg-white hover:text-[#2c3820] text-white px-8 py-4 rounded-full transition-all duration-300 font-semibold text-lg text-center inline-block"
               style={{ fontFamily: "Montserrat, sans-serif" }}
             >
