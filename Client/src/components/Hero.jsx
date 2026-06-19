@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import brochurePdf from "../assets/Landmark-Brochure_Olive&green.pdf";
+import brochurePdf from "../assets/LandmarkBrochure.pdf";
 import entranceLobby from "../assets/entrance_lobby.jpeg";
 import reraLogo from "../assets/rerabackgroundremovedlogo.png";
 
